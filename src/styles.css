@@ -113,7 +113,6 @@ h1, h2 { font-size: clamp(3.7rem, 7.2vw, 7.8rem); line-height: .96; letter-spaci
 @media (max-width: 760px) { .about-grid-after { margin-top: 95px; padding-top: 48px; display: block; }.about-grid-after .about-details { padding-top: 48px; } }
 
 /* Featured photo hero */
-.site-header { position: absolute; inset: 0 0 auto; width: 100%; color: #fff; }
 .hero.section-shell { --gold: var(--lime); isolation: isolate; display: flex; align-items: flex-start; justify-content: flex-start; min-height: min(800px, 100vh); max-width: none; padding: clamp(156px, 18vh, 215px) clamp(28px, 6vw, 88px) 76px; overflow: hidden; background: #111820; }
 .hero-photo, .hero-scrim { position: absolute; inset: 0; pointer-events: none; }
 .hero-photo { z-index: -3; background: url('/minahil-about.png') center 42% / cover no-repeat; animation: hero-photo-breathe 12s ease-in-out infinite alternate; }
