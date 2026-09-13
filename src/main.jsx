@@ -1,8 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshTransmissionMaterial, OrbitControls, Sparkles } from '@react-three/drei';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './styles.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   { number: '01 / 04', title: 'MERN Learning Hub', type: 'React / Node.js / MongoDB', year: '2024', category: 'Interactive', className: 'visual-orbit', label: 'BUILD', description: 'A focused learning platform for practical JavaScript and MERN development.', image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1000&q=85' },
@@ -196,23 +200,89 @@ function TerminalHint() {
 function ExperiencePanel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const rootRef = useRef(null);
+  const cardRef = useRef(null);
+  const tiltRef = useRef(null);
   useEffect(() => {
     if (isPaused) return undefined;
     const timer = window.setInterval(() => setActiveIndex((index) => (index + 1) % experiences.length), 4200);
     return () => window.clearInterval(timer);
   }, [isPaused]);
+  const gsapCtxRef = useRef(null);
+  useLayoutEffect(() => {
+    const mm = gsap.matchMedia();
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const ctx = gsap.context(() => {
+        gsap.from('.experience-role', { immediateRender: false, once: true, y: 48, opacity: 0, rotateX: -12, stagger: 0.085, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: rootRef.current, start: 'top 85%' } });
+        gsap.from('.experience-card', { immediateRender: false, once: true, x: 64, opacity: 0, rotateY: -6, duration: 0.95, ease: 'power3.out', scrollTrigger: { trigger: rootRef.current, start: 'top 78%' } });
+        gsap.fromTo('.experience-roles', { y: 40 }, { y: -40, ease: 'none', scrollTrigger: { trigger: rootRef.current, start: 'top bottom', end: 'bottom top', scrub: true } });
+        gsap.to('.experience-orb', { yPercent: -45, ease: 'none', stagger: 0.2, scrollTrigger: { trigger: rootRef.current, start: 'top bottom', end: 'bottom top', scrub: true } });
+      }, rootRef);
+      const onLoadRefresh = () => ScrollTrigger.refresh();
+      window.addEventListener('load', onLoadRefresh);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ScrollTrigger.refresh());
+      gsapCtxRef.current = ctx;
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const tiltEl = tiltRef.current;
+        const rxTo = gsap.quickTo(tiltEl, 'rotationX', { duration: 0.85, ease: 'power3.out' });
+        const ryTo = gsap.quickTo(tiltEl, 'rotationY', { duration: 0.85, ease: 'power3.out' });
+        const xTo = gsap.quickTo(tiltEl, 'x', { duration: 0.85, ease: 'power3.out' });
+        const yTo = gsap.quickTo(tiltEl, 'y', { duration: 0.85, ease: 'power3.out' });
+        const onMove = (event) => {
+          const card = cardRef.current;
+          if (!card) return;
+          const bounds = card.getBoundingClientRect();
+          const px = (event.clientX - bounds.left) / bounds.width - 0.5;
+          const py = (event.clientY - bounds.top) / bounds.height - 0.5;
+          rxTo(-py * 7);
+          ryTo(px * 9);
+          xTo(px * 16);
+          yTo(py * 10);
+        };
+        const onLeave = () => { rxTo(0); ryTo(0); xTo(0); yTo(0); };
+        cardRef.current.addEventListener('pointermove', onMove);
+        cardRef.current.addEventListener('pointerleave', onLeave);
+        return () => {
+          cardRef.current.removeEventListener('pointermove', onMove);
+          cardRef.current.removeEventListener('pointerleave', onLeave);
+          window.removeEventListener('load', onLoadRefresh);
+          ctx.revert();
+        };
+      }
+      return () => {
+        window.removeEventListener('load', onLoadRefresh);
+        ctx.revert();
+      };
+    });
+    return () => mm.revert();
+  }, []);
+  useEffect(() => {
+    const ctx = gsapCtxRef.current;
+    if (!ctx) return undefined;
+    const children = ctx.query('.experience-card-content > *');
+    if (!children.length) return undefined;
+    const anim = gsap.fromTo(children, { y: 30, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.08, duration: 0.55, ease: 'power3.out', overwrite: true });
+    return () => anim.kill();
+  }, [activeIndex]);
   const active = experiences[activeIndex];
   return (
-    <div className="experience-panel" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+    <div className="experience-panel" ref={rootRef} onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
       <div className="experience-roles" role="tablist" aria-label="Experience roles">{experiences.map((item, index) => <button type="button" role="tab" aria-selected={activeIndex === index} className={activeIndex === index ? 'experience-role is-active' : 'experience-role'} onClick={() => setActiveIndex(index)} key={item.id}><span className="experience-role-index">0{index + 1}</span><span className="experience-role-name">{item.role}</span><span className="experience-role-status">{item.status}</span></button>)}</div>
-      <div className="experience-card" key={active.id}>
-        <span className="experience-card-index">0{activeIndex + 1} / 0{experiences.length}</span>
-        <p className="eyebrow">The path so far</p>
-        <h3>{active.role}</h3>
-        <p className="experience-card-place">{active.place}</p>
-        <p className="experience-card-detail">{active.detail}</p>
-        <div className="experience-card-tags">{active.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-        <div className="experience-card-progress"><span style={{ width: `${((activeIndex + 1) / experiences.length) * 100}%` }} /></div>
+      <div className="experience-card" ref={cardRef} key={active.id}>
+        <div className="experience-card-tilt" ref={tiltRef}>
+          <span className="experience-orb experience-orb-one" aria-hidden="true" />
+          <span className="experience-orb experience-orb-two" aria-hidden="true" />
+          <span className="experience-orb experience-orb-three" aria-hidden="true" />
+          <div className="experience-card-content">
+            <span className="experience-card-index">0{activeIndex + 1} / 0{experiences.length}</span>
+            <p className="eyebrow">The path so far</p>
+            <h3>{active.role}</h3>
+            <p className="experience-card-place">{active.place}</p>
+            <p className="experience-card-detail">{active.detail}</p>
+            <div className="experience-card-tags">{active.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+          </div>
+          <div className="experience-card-progress"><span style={{ width: `${((activeIndex + 1) / experiences.length) * 100}%` }} /></div>
+        </div>
       </div>
     </div>
   );
