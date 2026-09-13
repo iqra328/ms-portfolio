@@ -239,6 +239,36 @@ function ExperiencePanel() {
   );
 }
 
+function TestimonialSlider() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [slideDirection, setSlideDirection] = useState(1);
+  useEffect(() => {
+    if (isPaused) return undefined;
+    const timer = window.setInterval(() => { setSlideDirection(1); setActiveIndex((index) => (index + 1) % testimonials.length); }, 5200);
+    return () => window.clearInterval(timer);
+  }, [isPaused]);
+  const active = testimonials[activeIndex];
+  const moveTestimonial = (direction) => {
+    setSlideDirection(direction);
+    setActiveIndex((index) => (index + direction + testimonials.length) % testimonials.length);
+  };
+  return (
+    <div className="testimonial-slider" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+      <figure className={`testimonial-feature testimonial-feature-${slideDirection > 0 ? 'right' : 'left'}`} key={active.name}>
+        <span className="testimonial-quote-mark" aria-hidden="true">"</span>
+        <blockquote>{active.quote}</blockquote>
+        <figcaption><span className="testimonial-avatar">{active.initials}</span><div><b>{active.name}</b><small>{active.role}</small></div><span className="testimonial-counter">0{activeIndex + 1} / 0{testimonials.length}</span></figcaption>
+      </figure>
+      <div className="testimonial-side">
+        <p className="eyebrow">Who said it</p>
+        <div className="testimonial-tabs" role="tablist" aria-label="Testimonials">{testimonials.map((item, index) => <button type="button" role="tab" aria-selected={activeIndex === index} className={activeIndex === index ? 'testimonial-tab is-active' : 'testimonial-tab'} onClick={() => { setSlideDirection(index >= activeIndex ? 1 : -1); setActiveIndex(index); }} key={item.name}><b>0{index + 1}</b><span>{item.name}</span></button>)}</div>
+        <div className="testimonial-controls"><button type="button" className="testimonial-arrow" onClick={() => moveTestimonial(-1)} aria-label="Previous testimonial">←</button><button type="button" className="testimonial-arrow" onClick={() => moveTestimonial(1)} aria-label="Next testimonial">→</button></div>
+      </div>
+    </div>
+  );
+}
+
 function AboutProfile() {
   const [activeTab, setActiveTab] = useState(0);
   const [slideDirection, setSlideDirection] = useState(1);
@@ -331,7 +361,7 @@ function App() {
         <section className="skills section-shell" id="skills"><div className="skills-intro reveal"><p className="eyebrow">04 — The toolkit</p><h2>Good with<br /><em>the details.</em></h2><p>I move comfortably between big-picture thinking and the tiny interaction that makes a product feel alive.</p></div><div className="skill-cloud">{skills.map((skill, index) => <span className={`skill-pill skill-${index + 1}`} key={skill}>{skill}<b>0{index + 1}</b></span>)}</div></section>
         <section className="about section-shell" id="about"><div className="section-heading reveal"><div><p className="eyebrow">05 — About Minahil</p><h2>Code that is<br /><em>useful.</em></h2></div><p className="section-note about-intro-tab"><span className="about-intro-number">01</span><span>Meet Minahil Irfan: a MERN developer, trainer, and thoughtful builder.</span><b>↗</b></p></div><div className="about-modern-layout"><div className="about-left-column"><AboutProfile /><div className="about-stats"><div className="stat-card reveal reveal-up"><strong>50<span>+</span></strong><small>Students mentored</small></div><div className="stat-card reveal reveal-up"><strong>6<span>+</span></strong><small>Projects delivered</small></div><div className="stat-card reveal reveal-up"><strong>3<span>+</span></strong><small>Years experience</small></div><div className="stat-card reveal reveal-up"><strong>100<span>%</span></strong><small>Dedication</small></div></div></div><div className="services-panel"><p className="services-kicker reveal reveal-right"><span /> What I do for you</p><div className="services-grid">{services.map((service, index) => <article className="service-card reveal reveal-right" style={{ '--delay': `${index * 120}ms` }} key={service.title}><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p></article>)}</div></div></div><div className="about-grid about-grid-after"><p className="about-lead reveal"><span className="lead-kicker">Build / Teach / Evolve</span><span className="lead-text">I create scalable web applications and teach the thinking behind them, combining clean code, expressive interfaces, and practical problem solving.</span></p><div className="about-details reveal"><p>Open to full stack collaborations, technical mentorship, workshops, and developer training for teams and students.</p><div className="about-tags"><span>MERN specialist</span><span>JavaScript trainer</span><span>Full stack builder</span><span>Remote friendly</span></div><a className="text-link" href="mailto:hello@minahil.dev">Work with Minahil <span>↗</span></a></div></div></section>
         <section className="students section-shell" id="students"><div className="students-mark" aria-hidden="true">MI</div><div className="students-copy reveal"><p className="eyebrow">For students + future developers</p><h2 className="students-heading"><span className="students-word">Learn</span> <span className="students-word">by</span><br /><em className="students-word students-word-alt">building.</em></h2><div className="students-badge" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="students-badge-arc" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0" /></defs><text><textPath href="#students-badge-arc">IDEAS → CODE → SHIP → REPEAT · </textPath></text></svg><b>✦</b></div><p className="students-lead">Confused by the gap between tutorials and real projects? I teach <em className="hl" title="JavaScript">JavaScript</em> and <em className="hl" title="MongoDB · Express.js · React.js · Node.js">MERN</em> development through practical builds, code reviews, and a clear path from idea to deployment.</p><a className="button button-outline" href="mailto:hello@minahil.dev?subject=MERN%20training">Ask about training <span>↗</span></a></div><StudentShowcase /></section>
-        <section className="testimonials section-shell" id="testimonials"><div className="section-heading reveal"><div><p className="eyebrow">06 — Kind words</p><h2>People say<br /><em>nice things.</em></h2></div><p className="section-note">Feedback from learners, clients, and teammates along the way.</p></div><div className="testimonial-grid">{testimonials.map((item, index) => <figure className="testimonial-card reveal reveal-up" style={{ '--delay': `${index * 90}ms` }} key={item.name}><span className="testimonial-quote-mark">"</span><blockquote>{item.quote}</blockquote><figcaption><span className="testimonial-avatar">{item.initials}</span><div><b>{item.name}</b><small>{item.role}</small></div></figcaption></figure>)}</div></section>
+        <section className="testimonials section-shell" id="testimonials"><div className="section-heading reveal"><div><p className="eyebrow">06 — Kind words</p><h2>People say<br /><em>nice things.</em></h2></div><p className="section-note">Feedback from learners, clients, and teammates along the way.</p></div><TestimonialSlider /></section>
         <section className="contact section-shell" id="contact"><div className="contact-inner reveal"><p className="eyebrow">07 — Start a conversation</p><h2>Let's build<br /><em>something.</em></h2><a className="contact-link" href="mailto:hello@minahil.dev">hello@minahil.dev <span>↗</span></a></div><div className="contact-footer"><span>© 2026 Minahil Irfan / Karachi, Pakistan</span><div><a href="#top">Back to top ↑</a><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com" target="_blank" rel="noreferrer">GitHub ↗</a></div></div></section>
       </main>
     </div>
