@@ -317,11 +317,10 @@ function App() {
       <div className="noise" aria-hidden="true" />
       <div className="pointer-glow" aria-hidden="true" />
       <ScrollProgress />
-      <header className="site-header">
-        <a className="brand" href="#top" onClick={closeMenu} aria-label="Minahil Irfan home"><span className="brand-mark">MI</span><span>minahil.irfan</span></a>
+      <header className="site-header"><div className="site-header-inner"><a className="brand" href="#top" onClick={closeMenu} aria-label="Minahil Irfan home"><span className="brand-mark">MI</span><span>minahil.irfan</span></a>
         <nav className={`desktop-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation"><a href="#about" onClick={closeMenu}>About</a><a href="#work" onClick={closeMenu}>Projects</a><a href="#students" onClick={closeMenu}>Students</a><a href="#testimonials" onClick={closeMenu}>Kind words</a><a href="#experience" onClick={closeMenu}>Experience</a><a href="#skills" onClick={closeMenu}>Skills</a><a href="#contact" onClick={closeMenu}>Contact</a></nav>
         <a className="header-cta" href="mailto:hello@minahil.dev">Let's talk <span>↗</span></a>
-        <button className={`menu-toggle ${menuOpen ? 'is-open' : ''}`} type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}><span /><span /></button>
+        <button className={`menu-toggle ${menuOpen ? 'is-open' : ''}`} type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}><span /><span /></button></div>
       </header>
 
       <main id="top">
