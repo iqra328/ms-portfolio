@@ -5,20 +5,55 @@ import { Float, MeshTransmissionMaterial, OrbitControls, Sparkles } from '@react
 import './styles.css';
 
 const projects = [
-  { number: '01 / 04', title: 'MERN Learning Hub', type: 'React / Node.js / MongoDB', year: '2024', category: 'Interactive', className: 'visual-orbit', label: 'BUILD', description: 'A focused learning platform for practical JavaScript and MERN development.', image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1000&q=85' },
-  { number: '02 / 04', title: 'Course Management API', type: 'Express / REST API / Auth', year: '2024', category: 'Experience', className: 'visual-coral', label: 'SHIP', description: 'A secure backend for courses, learners, progress tracking, and role-based access.', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=85' },
-  { number: '03 / 04', title: 'E-commerce Dashboard', type: 'React / Redux / UX', year: '2023', category: 'Identity', className: 'visual-blue', label: 'SCALE', description: 'A responsive admin experience for managing products, orders, and customer insights.', image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1000&q=85' },
-  { number: '04 / 04', title: 'Student Portfolio Lab', type: 'Mentorship / Frontend', year: '2023', category: 'Identity', className: 'visual-green', label: 'GROW', description: 'A guided portfolio builder helping students turn their skills into a real web presence.', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85' },
+  { number: '01 / 04', title: 'MERN Learning Hub', type: 'React / Node.js / MongoDB', year: '2024', category: 'Interactive', className: 'visual-orbit', label: 'BUILD', description: 'A focused learning platform for practical JavaScript and MERN development.', image: '/project%202.jpg' },
+  { number: '02 / 04', title: 'Course Management API', type: 'Express / REST API / Auth', year: '2024', category: 'Experience', className: 'visual-coral', label: 'SHIP', description: 'A secure backend for courses, learners, progress tracking, and role-based access.', image: '/project%203.jpg' },
+  { number: '03 / 04', title: 'E-commerce Dashboard', type: 'React / Redux / UX', year: '2023', category: 'Identity', className: 'visual-blue', label: 'SCALE', description: 'A responsive admin experience for managing products, orders, and customer insights.', image: '/project%205.jpg' },
+  { number: '04 / 04', title: 'Student Portfolio Lab', type: 'Mentorship / Frontend', year: '2023', category: 'Identity', className: 'visual-green', label: 'GROW', description: 'A guided portfolio builder helping students turn their skills into a real web presence.', image: '/project%206.jpg' },
 ];
 
 const experiences = [
-  { id: 'trainer', role: 'Lead Trainer', place: 'SMIT · Karachi', status: 'Current', tags: ['Curriculum design', 'Code reviews', 'MERN mentorship'], detail: 'Leading practical MERN training at SMIT — designing real project paths, reviewing learner code, and turning beginners into builders who ship.' },
-  { id: 'mern', role: 'MERN Stack Developer', place: 'Karachi · Remote', status: 'Active', tags: ['React', 'Node.js', 'Express', 'MongoDB'], detail: 'Building full-stack products end to end — responsive React interfaces, secure REST APIs, authentication, and data models that stay quick under real use.' },
-  { id: 'frontend', role: 'Frontend Developer', place: 'Product teams · Karachi', status: 'Earlier', tags: ['JavaScript', 'UI engineering', 'Performance'], detail: 'Crafting interfaces people enjoy — clean component architecture, thoughtful motion, accessibility, and pixel-consistent responsive layouts.' },
-  { id: 'wordpress', role: 'WordPress Developer', place: 'Freelance projects', status: 'Earlier', tags: ['Themes', 'Plugins', 'WooCommerce'], detail: 'Designing and customising WordPress sites — hand-built themes, plugin tuning, and content flows that make client updates effortless.' },
+  { id: 'smit', company: 'Saylani Mass IT Training', monogram: 'SM', role: 'Lead Trainer', type: 'Part-time', period: 'Jun 2024 — Present', duration: '2 yrs 4 mos', location: 'Karachi, Sindh, Pakistan · On-site', status: 'Current', accent: '#d8fa56', tags: ['Curriculum design', 'Code reviews', 'MERN mentorship', 'Workshops'], detail: 'Leading practical MERN training at Saylani Mass IT Training — designing real project paths, reviewing learner code, and turning beginners into builders who ship.' },
+  { id: 'hydro', company: 'Hydro Web Solutions', monogram: 'HW', role: 'Frontend Developer', type: 'Part-time', period: 'Oct 2023 — Jun 2024', duration: '9 mos', location: 'Karachi, Sindh, Pakistan · Remote', status: 'Previous', accent: '#85b7ff', tags: ['JavaScript', 'UI engineering', 'Responsive UI'], detail: 'Crafting responsive, pixel-consistent product interfaces at Hydro Web Solutions — clean component architecture, thoughtful motion, and accessible layouts.' },
+  { id: 'nextrevol', company: 'NextRevol', monogram: 'NR', role: 'Frontend Developer', type: 'Internship', period: 'Aug 2023 — Oct 2023', duration: '3 mos', location: 'Karachi, Sindh, Pakistan', status: 'Internship', accent: '#f36f5f', tags: ['Frontend', 'Dashboards', 'Team collaboration'], detail: 'Internship at NextRevol building frontend features — turning designs into working UI, learning team workflows, and shipping real dashboard screens.' },
 ];
 
-const skills = ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'JavaScript', 'REST APIs', 'Authentication', 'Developer training'];
+const education = [
+  { degree: 'Web & Mobile App Development', level: 'Certification', institution: 'Saylani Mass IT Training (SMIT)', year: '2023 — 2024', tag: 'SM', accent: '#d8fa56', description: 'Advanced practical training in web and mobile app development — building real MERN projects, REST APIs, and app interfaces that reach production.' },
+  { degree: 'Diploma in Information Technology', level: 'Diploma', institution: 'Green Institute of IT', year: '2021 — 2022', tag: 'GI', accent: '#85b7ff', description: 'A foundational IT diploma covering programming, networking, and modern office systems — the base that made a career in code feel possible.' },
+  { degree: 'B.A · Bachelor of Arts', level: 'Graduation', institution: 'Graduated in Arts', year: '2020 — 2023', tag: 'BA', accent: '#f36f5f', description: 'Graduated in Arts while sharpening development skills on the side — formal study balanced with hands-on coding, right after pre-engineering.' },
+  { degree: 'Intermediate · Pre-Engineering', level: 'Intermediate', institution: 'Board of Secondary Education', year: '2018 — 2020', tag: 'BSE', accent: '#f4f2e9', description: 'Pre-engineering from the Board of Secondary Education — mathematics and science foundations that built strong problem-solving habits.' },
+];
+
+const skillGroups = [
+  { title: 'Frontend', icon: '</>', items: ['React.js', 'Next.js', 'JavaScript ES6+', 'TypeScript', 'Redux Toolkit', 'GSAP', 'Framer Motion'] },
+  { title: 'Backend', icon: '◈', items: ['Node.js', 'Express.js', 'REST APIs', 'JWT Authentication', 'Socket.io'] },
+  { title: 'Data & Services', icon: '◎', items: ['MongoDB', 'Firebase', 'Cloudinary', 'Stripe', 'AI API Integration'] },
+  { title: 'Deploy & Tools', icon: '⚙', items: ['Git & GitHub', 'Vercel', 'Render', 'Responsive Design'] },
+];
+const tickerSkills = ['React.js', 'JavaScript ES6+', 'Next.js', 'Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'Redux Toolkit', 'Firebase', 'JWT', 'Git & GitHub', 'TypeScript', 'GSAP', 'Framer Motion', 'Cloudinary', 'Stripe', 'Socket.io', 'AI API Integration', 'Vercel', 'Render'];
+const tickIcons = (cls) => <i className={`devicon-${cls}`} />;
+const skillIcons = {
+  'React.js': tickIcons('react-plain'),
+  'JavaScript ES6+': tickIcons('javascript-plain'),
+  'Next.js': tickIcons('nextjs-plain'),
+  'Node.js': tickIcons('nodejs-plain'),
+  'Express.js': tickIcons('express-original'),
+  'MongoDB': tickIcons('mongodb-plain'),
+  'REST APIs': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="2.5" /><circle cx="5" cy="5" r="2" /><circle cx="19" cy="5" r="2" /><circle cx="5" cy="19" r="2" /><circle cx="19" cy="19" r="2" /><path d="M6.6 6.6l3 3M17.4 6.6l-3 3M14.4 14.4l3 3M9.6 14.4l-3 3" /></svg>,
+  'Redux Toolkit': tickIcons('redux-original'),
+  'Firebase': tickIcons('firebase-plain'),
+  'JWT': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4" /></svg>,
+  'Git & GitHub': tickIcons('github-original'),
+  'TypeScript': tickIcons('typescript-plain'),
+  'GSAP': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>,
+  'Framer Motion': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2" /><polyline points="2 17 12 22 22 17" /><polyline points="2 12 12 17 22 12" /></svg>,
+  'Cloudinary': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" /></svg>,
+  'Stripe': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2" /><line x1="1" y1="10" x2="23" y2="10" /></svg>,
+  'Socket.io': tickIcons('socketio-original'),
+  'AI API Integration': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2" /><rect x="9" y="9" width="6" height="6" /><line x1="9" y1="1" x2="9" y2="4" /><line x1="15" y1="1" x2="15" y2="4" /><line x1="9" y1="20" x2="9" y2="23" /><line x1="15" y1="20" x2="15" y2="23" /><line x1="20" y1="9" x2="23" y2="9" /><line x1="20" y1="14" x2="23" y2="14" /><line x1="1" y1="9" x2="4" y2="9" /><line x1="1" y1="14" x2="4" y2="14" /></svg>,
+  'Vercel': tickIcons('vercel-original'),
+  'Render': <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2" /><rect x="2" y="14" width="20" height="8" rx="2" ry="2" /><line x1="6" y1="6" x2="6.01" y2="6" /><line x1="6" y1="18" x2="6.01" y2="18" /></svg>,
+};
 const roles = ['MERN Stack Developer', 'Lead Trainer @ SMIT', 'React & Node.js Specialist'];
 const aboutTabs = [
   { label: 'Profile', title: 'Minahil Irfan.', text: 'I am a MERN stack developer and trainer who builds thoughtful digital products with JavaScript, React, Node.js, Express, and MongoDB. My work sits between strong engineering and human-friendly design.', image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1200&q=80' },
@@ -42,12 +77,12 @@ const testimonials = [
 const portraitImage = '/minahil-about.png';
 
 const studentWorks = [
-  { id: 'taskflow', category: 'MERN Apps', student: 'Ahmed Raza', title: 'TaskFlow', stack: 'React · Node · Express · MongoDB', description: 'A collaborative task manager built end to end — students learn auth, CRUD, and live progress tracking across the whole stack.', tags: ['Auth', 'CRUD', 'REST API'], image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=85' },
-  { id: 'shopverse', category: 'MERN Apps', student: 'Fatima Noor', title: 'ShopVerse', stack: 'React · Express · Mongoose', description: 'A lightweight e-commerce store with product catalog, cart state, and an admin panel — a complete first MERN journey.', tags: ['Cart', 'Admin', 'Inventory'], image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1000&q=85' },
-  { id: 'blogwave', category: 'MERN Apps', student: 'Usman Ali', title: 'BlogWave', stack: 'React · Node · Markdown · MongoDB', description: 'A writing-first blog engine with editor, comments, and tags — practicing real data modeling instead of tutorials.', tags: ['CRUD', 'Markdown', 'Comments'], image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=85' },
-  { id: 'weatherly', category: 'Frontend', student: 'Hira Saeed', title: 'Weatherly', stack: 'JavaScript · Fetch API · CSS Grid', description: 'A weather dashboard built against a live API with search, geolocation, and a clean responsive layout.', tags: ['APIs', 'Responsive', 'State'], image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000&q=85' },
-  { id: 'volt', category: 'Frontend', student: 'Bilal Khan', title: 'Volt Landing', stack: 'HTML · CSS · Vanilla JS', description: 'A bold product landing page with scroll animations and accessible interactions — design meets discipline.', tags: ['Animation', 'Accessibility'], image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1000&q=85' },
-  { id: 'typerush', category: 'Mini Tools', student: 'Zara Ahmed', title: 'TypeRush', stack: 'JavaScript · Timer · Web Storage', description: 'A typing-speed trainer with words-per-minute tracking and localStorage-backed score history.', tags: ['JS Logic', 'Timer', 'Storage'], image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1000&q=85' },
+  { id: 'taskflow', category: 'MERN Apps', student: 'Ahmed Raza', title: 'TaskFlow', stack: 'React · Node · Express · MongoDB', description: 'A collaborative task manager built end to end — students learn auth, CRUD, and live progress tracking across the whole stack.', tags: ['Auth', 'CRUD', 'REST API'], image: '/student-pro-1.jpg' },
+  { id: 'shopverse', category: 'MERN Apps', student: 'Fatima Noor', title: 'ShopVerse', stack: 'React · Express · Mongoose', description: 'A lightweight e-commerce store with product catalog, cart state, and an admin panel — a complete first MERN journey.', tags: ['Cart', 'Admin', 'Inventory'], image: '/student%20proj%20-2.jpg' },
+  { id: 'blogwave', category: 'MERN Apps', student: 'Usman Ali', title: 'BlogWave', stack: 'React · Node · Markdown · MongoDB', description: 'A writing-first blog engine with editor, comments, and tags — practicing real data modeling instead of tutorials.', tags: ['CRUD', 'Markdown', 'Comments'], image: '/student-pro-4.jpg' },
+  { id: 'weatherly', category: 'Frontend', student: 'Hira Saeed', title: 'Weatherly', stack: 'JavaScript · Fetch API · CSS Grid', description: 'A weather dashboard built against a live API with search, geolocation, and a clean responsive layout.', tags: ['APIs', 'Responsive', 'State'], image: '/stu-pro-5.jpg' },
+  { id: 'volt', category: 'Frontend', student: 'Bilal Khan', title: 'Volt Landing', stack: 'HTML · CSS · Vanilla JS', description: 'A bold product landing page with scroll animations and accessible interactions — design meets discipline.', tags: ['Animation', 'Accessibility'], image: '/student-pro-6.jpg' },
+  { id: 'typerush', category: 'Mini Tools', student: 'Zara Ahmed', title: 'TypeRush', stack: 'JavaScript · Timer · Web Storage', description: 'A typing-speed trainer with words-per-minute tracking and localStorage-backed score history.', tags: ['JS Logic', 'Timer', 'Storage'], image: '/WhatsApp_Image_2026-06-02_at_10.47.56_AM_k0vmnf.jpg' },
 ];
 
 function Sculpture() {
@@ -141,20 +176,36 @@ function ProjectCard({ project }) {
         {project.className === 'visual-blue' && <><span className="blue-copy">SOFT<br /><strong>POWER</strong></span><div className="blue-shape" /></>}
         {project.className === 'visual-green' && <><div className="green-grid" /><span className="green-copy">FIELD<br /><em>NOTES</em></span><span className="green-stamp">STUDIO<br />/ 04</span></>}
       </div>
-      <div className="project-meta"><div><p className="project-number">{project.number}</p><h3>{project.title}</h3><p className="project-description">{project.description}</p></div><p className="project-type">{project.type}<br />{project.year}</p><a className="round-arrow" href="#contact" aria-label={`Discuss ${project.title} project`}>↗</a></div>
+      <div className="project-meta"><div><p className="project-number">{project.number}</p><h3>{project.title}</h3><p className="project-description">{project.description}</p></div><p className="project-type">{project.type}<br /><b>{project.year}</b></p><a className="round-arrow" href="#contact" aria-label={`Discuss ${project.title} project`}>↗</a></div>
+    </article>
+  );
+}
+
+function MiniProjectCard({ project, number }) {
+  return (
+    <article className="project-card project-card-mini">
+      <div className="project-mini-visual">
+        <img className="project-image" src={project.image} alt={`${project.title} preview`} loading="lazy" />
+        <div className="project-mini-shade" />
+        <span className="project-mini-tag">0{number}</span>
+        <div className="project-mini-copy"><h3>{project.title}</h3><p>{project.type}<br />{project.year}</p></div>
+      </div>
     </article>
   );
 }
 
 function ProjectsSlider({ projects: sliderProjects }) {
-  const [activeProject, setActiveProject] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const swipeStart = useRef(null);
-  useEffect(() => { setActiveProject(0); }, [sliderProjects.length]);
-  useEffect(() => { if (sliderProjects.length < 2 || isPaused) return undefined; const timer = window.setInterval(() => setActiveProject((index) => (index + 1) % sliderProjects.length), 5200); return () => window.clearInterval(timer); }, [sliderProjects.length, isPaused]);
-  const moveProject = (direction) => setActiveProject((index) => (index + direction + sliderProjects.length) % sliderProjects.length);
   if (!sliderProjects.length) return <p className="empty-projects">No projects in this category yet.</p>;
-  return <div className="projects-slider" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}><div className="slider-stage" onPointerDown={(event) => { swipeStart.current = event.clientX; }} onPointerUp={(event) => { if (swipeStart.current === null) return; const travel = event.clientX - swipeStart.current; if (Math.abs(travel) > 45) moveProject(travel > 0 ? -1 : 1); swipeStart.current = null; }}><div className="slider-track" style={{ '--active-project': activeProject }}>{sliderProjects.map((project, index) => <div className={`slider-item ${activeProject === index ? 'is-active' : ''}`} key={project.title}><ProjectCard project={project} /></div>)}</div></div><div className="slider-controls"><button type="button" className="slider-arrow" onClick={() => moveProject(-1)} aria-label="Previous project">←</button><div className="slider-dots">{sliderProjects.map((project, index) => <button type="button" className={activeProject === index ? 'slider-dot is-active' : 'slider-dot'} onClick={() => setActiveProject(index)} aria-label={`Show project ${index + 1}`} key={project.title} />)}</div><button type="button" className="slider-arrow" onClick={() => moveProject(1)} aria-label="Next project">→</button></div></div>;
+  const gcd = (a, b) => (b ? gcd(b, a % b) : a);
+  const cols = (typeof window === 'undefined' ? 3 : window.innerWidth <= 760 ? 2 : 3);
+  const base = sliderProjects.length;
+  const count = (base * cols) / gcd(base, cols);
+  const cards = Array.from({ length: count }, (_, i) => ({ ...sliderProjects[i % base], _number: (i % base) + 1 }));
+  const rowCount = count / cols;
+  const rows = [];
+  for (let i = 0; i < cards.length; i += cols) rows.push(cards.slice(i, i + cols));
+  const secondsPerRow = 2.6;
+  return <div className="projects-slider"><div className="slider-stage"><div className="slider-track slider-track-loop" style={{ '--loop-count': rowCount, '--loop-duration': `${rowCount * secondsPerRow}s` }}>{rows.map((row, r) => <div className="slider-row" key={r}>{row.map((project) => <MiniProjectCard project={project} number={project._number} key={`${project.title}-${project._number}-${r}`} />)}</div>)}</div></div></div>;
 }
 
 function ScrollProgress() {
@@ -218,17 +269,20 @@ function ExperiencePanel() {
   const active = experiences[activeIndex];
   return (
     <div className="experience-panel" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-      <div className="experience-roles" role="tablist" aria-label="Experience roles">{experiences.map((item, index) => <button type="button" role="tab" aria-selected={activeIndex === index} className={activeIndex === index ? 'experience-role is-active' : 'experience-role'} onClick={() => setActiveIndex(index)} key={item.id}><span className="experience-role-index">0{index + 1}</span><span className="experience-role-name">{item.role}</span><span className="experience-role-status">{item.status}</span></button>)}</div>
+      <div className="experience-roles" role="tablist" aria-label="Experience roles">{experiences.map((item, index) => <button type="button" role="tab" aria-selected={activeIndex === index} className={activeIndex === index ? 'experience-role is-active' : 'experience-role'} onClick={() => setActiveIndex(index)} key={item.id}><span className="experience-role-logo" style={{ '--accent': item.accent }}>{item.monogram}</span><span className="experience-role-copy"><span className="experience-role-index">0{index + 1}</span><span className="experience-role-name">{item.role}</span><span className="experience-role-company">{item.company}</span></span><span className="experience-role-status">{item.status}</span></button>)}</div>
       <div className="experience-card" key={active.id}>
         <div className="experience-card-tilt" ref={tiltRef} onMouseMove={tiltCard} onMouseLeave={clearTilt}>
-          <span className="experience-orb experience-orb-one" aria-hidden="true" />
-          <span className="experience-orb experience-orb-two" aria-hidden="true" />
-          <span className="experience-orb experience-orb-three" aria-hidden="true" />
+          <span className="experience-orb experience-orb-one" style={{ '--accent': active.accent }} aria-hidden="true" />
+          <span className="experience-orb experience-orb-two" style={{ '--accent': active.accent }} aria-hidden="true" />
+          <span className="experience-orb experience-orb-three" style={{ '--accent': active.accent }} aria-hidden="true" />
+          {/* Company logo */}
+          <div className="experience-logo-float" style={{ '--accent': active.accent }}><span className="experience-logo-ring experience-logo-ring-one" /><span className="experience-logo-ring experience-logo-ring-two" /><span className="experience-logo">{active.monogram}</span></div>
           <div className="experience-card-content">
-            <span className="experience-card-index">0{activeIndex + 1} / 0{experiences.length}</span>
-            <p className="eyebrow">The path so far</p>
+            <div className="experience-card-meta"><span className="experience-card-index">0{activeIndex + 1} / 0{experiences.length}</span><span className="experience-card-period">{active.period} · <b>{active.duration}</b></span></div>
+            <p className="eyebrow">{active.type} / {active.status}</p>
             <h3>{active.role}</h3>
-            <p className="experience-card-place">{active.place}</p>
+            <p className="experience-card-place">{active.company}</p>
+            <p className="experience-card-location">{active.location}</p>
             <p className="experience-card-detail">{active.detail}</p>
             <div className="experience-card-tags">{active.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
           </div>
@@ -237,6 +291,38 @@ function ExperiencePanel() {
       </div>
     </div>
   );
+}
+
+function EducationPanel() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  useEffect(() => {
+    if (isPaused) return undefined;
+    const timer = window.setInterval(() => setActiveIndex((index) => (index + 1) % education.length), 4600);
+    return () => window.clearInterval(timer);
+  }, [isPaused]);
+  const move = (direction) => setActiveIndex((index) => (index + direction + education.length) % education.length);
+  return (
+    <div className="education-panel" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
+      <div className="education-cards">
+        {education.map((item, index) => <article className={`education-card ${activeIndex === index ? 'is-active' : ''}`} style={{ '--accent': item.accent, '--flip': activeIndex === index ? 1 : 0, '--reveal-delay': `${index * 90}ms` }} onClick={() => setActiveIndex(index)} key={item.degree}><div className="education-card-inner"><div className="education-card-face education-card-front"><span className="education-card-watermark">0{index + 1}</span><div className="education-card-top"><span className="education-card-level">{item.level}</span><span className="education-card-tag">{item.tag}</span></div><div className="education-card-year">{item.year}</div><div className="education-card-copy"><h3>{item.degree}</h3><p>{item.institution}</p></div></div><div className="education-card-face education-card-back"><span className="education-card-back-label"><b>0{index + 1}</b>{item.level}</span><h3>{item.degree}</h3><p className="education-card-back-year">{item.year}</p><p className="education-card-back-institution">{item.institution}</p><p className="education-card-back-desc">{item.description}</p><span className="education-card-more">Open →</span></div></div></article>)}
+      </div>
+      <div className="education-footer">
+        <div className="education-progress"><span style={{ width: `${((activeIndex + 1) / education.length) * 100}%` }} /></div>
+        <div className="education-controls"><button type="button" className="education-arrow" onClick={() => move(-1)} aria-label="Previous education">←</button><div className="education-dots" role="tablist" aria-label="Choose education">{education.map((item, index) => <button type="button" role="tab" aria-selected={activeIndex === index} className={activeIndex === index ? 'education-dot is-active' : 'education-dot'} onClick={() => setActiveIndex(index)} aria-label={`Show ${item.degree}`} key={item.degree} />)}</div><button type="button" className="education-arrow" onClick={() => move(1)} aria-label="Next education">→</button></div>
+      </div>
+    </div>
+  );
+}
+
+function FeedbackNote() {
+  const [wordIndex, setWordIndex] = useState(0);
+  const words = ['learners', 'clients', 'teammates'];
+  useEffect(() => {
+    const timer = window.setInterval(() => setWordIndex((index) => (index + 1) % words.length), 2600);
+    return () => window.clearInterval(timer);
+  }, []);
+  return <p className="section-note feedback-note">Straight from the <b key={wordIndex}>{words[wordIndex]}</b> who shaped the work.</p>;
 }
 
 function TestimonialSlider() {
@@ -299,6 +385,24 @@ function StudentShowcase() {
     setSlideDirection(direction);
     setActiveIndex((index) => (index + direction + visibleWorks.length) % visibleWorks.length);
   };
+  const shotRef = useRef(null);
+  useEffect(() => {
+    const shot = shotRef.current;
+    const visual = shot ? shot.parentElement : null;
+    if (!shot || !visual) return undefined;
+    const apply = () => {
+      const loaded = shot.querySelector('img');
+      if (loaded && !loaded.complete) return;
+      const offset = Math.max(0, shot.offsetHeight - visual.clientHeight);
+      visual.style.setProperty('--shot-scroll', `${offset}px`);
+    };
+    apply();
+    const img = shot.querySelector('img');
+    if (img) img.addEventListener('load', apply);
+    const resize = new ResizeObserver(apply);
+    resize.observe(visual);
+    return () => { if (img) img.removeEventListener('load', apply); resize.disconnect(); };
+  }, [activeWork]);
   if (!activeWork) return null;
   return (
     <div className="student-showcase" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
@@ -306,11 +410,13 @@ function StudentShowcase() {
       <div className="student-stage">
         <article className={`student-card student-card-${slideDirection > 0 ? 'right' : 'left'}`} key={activeWork.id}>
           <div className={`student-card-visual student-visual-${activeWork.category === 'MERN Apps' ? 'green' : activeWork.category === 'Frontend' ? 'blue' : 'coral'}`}>
-            <img src={activeWork.image} alt={`${activeWork.title} — student project`} loading="lazy" />
+            <div className="student-shot" ref={shotRef}>
+              <img src={activeWork.image} alt={`${activeWork.title} — student project`} loading="lazy" />
+            </div>
             <span className="student-visual-index">{String(currentShow + 1).padStart(2, '0')} / {String(visibleWorks.length).padStart(2, '0')}</span>
             <span className="student-visual-stamp">{activeWork.category}</span>
           </div>
-          <div className="student-card-body"><p className="student-card-stack">{activeWork.stack}</p><h3>{activeWork.title}</h3><p className="student-card-by">built by <b>{activeWork.student}</b></p><p className="student-card-description">{activeWork.description}</p><div className="student-card-tags">{activeWork.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
+          <div className="student-card-body"><p className="student-card-stack">{activeWork.stack}</p><h3>{activeWork.title}</h3><p className="student-card-by">built by a <b>student</b></p><p className="student-card-description">{activeWork.description}</p><div className="student-card-tags">{activeWork.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
         </article>
         <div className="student-controls">
           <button type="button" className="student-arrow" onClick={() => moveWork(-1)} aria-label="Previous student project">←</button>
@@ -323,8 +429,92 @@ function StudentShowcase() {
   );
 }
 
+const MESSAGES_KEY = 'minahil_contact_messages_v1';
+const OWNER = { phone: '0335-2381776', whatsapp: '0335-2381776', whatsappIntl: '923352381776', email: 'duashaikh603@gmail.com', location: 'Gulshan-e-Hadeed, Karachi' };
+const getMessages = () => { try { return JSON.parse(localStorage.getItem(MESSAGES_KEY)) || []; } catch { return []; } };
+const saveMessage = (message) => { const all = getMessages(); all.push(message); localStorage.setItem(MESSAGES_KEY, JSON.stringify(all)); };
+const msgCount = () => getMessages().filter((message) => !message.read).length;
+const sendToWhatsApp = (sent) => {
+  const text = [`New message from your portfolio`, ``, `Name: ${sent.name}`, `Email: ${sent.email}`, `Subject: ${sent.subject}`, ``, `Message:`, sent.message, ``, `Sent via portfolio contact form`].join('\n');
+  window.open(`https://wa.me/${OWNER.whatsappIntl}?text=${encodeURIComponent(text)}`, '_blank');
+};
+
+function ContactForm({ onSent }) {
+  const [form, setForm] = useState({ name: '', email: '', subject: 'Project inquiry', message: '' });
+  const [errors, setErrors] = useState({});
+  const [status, setStatus] = useState('idle');
+  const [lastSent, setLastSent] = useState(null);
+  const subjects = ['Project inquiry', 'Training / Mentorship', 'Freelance work', 'Just saying hello'];
+  const update = (field) => (event) => { setForm((value) => ({ ...value, [field]: event.target.value })); setErrors((value) => ({ ...value, [field]: undefined })); };
+  const submit = (event) => {
+    event.preventDefault();
+    const nextErrors = {};
+    if (form.name.trim().length < 2) nextErrors.name = 'Please enter your name.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) nextErrors.email = 'Please enter a valid email.';
+    if (form.message.trim().length < 10) nextErrors.message = 'A few more words — at least 10 characters.';
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length) return;
+    const sent = { name: form.name.trim(), email: form.email.trim(), subject: form.subject, message: form.message.trim() };
+    setStatus('sending');
+    setLastSent(null);
+    window.setTimeout(() => {
+      saveMessage({ id: `msg_${Date.now()}`, ...sent, createdAt: new Date().toISOString(), read: false });
+      sendToWhatsApp(sent);
+      setLastSent(sent);
+      setStatus('success');
+      setForm({ name: '', email: '', subject: 'Project inquiry', message: '' });
+      if (onSent) onSent();
+    }, 850);
+  };
+  return (
+    <form className="contact-form" onSubmit={submit} noValidate>
+      <div className="contact-form-head"><span className="contact-form-status"><i /> Replies within 24h</span><span className="contact-form-sep" /></div>
+      <div className="contact-field-row">
+        <div className={`contact-field ${errors.name ? 'has-error' : ''}`}><label htmlFor="contact-name">Name</label><input id="contact-name" type="text" placeholder="Your name" value={form.name} onChange={update('name')} autoComplete="name" /><span className="contact-field-error">{errors.name}</span></div>
+        <div className={`contact-field ${errors.email ? 'has-error' : ''}`}><label htmlFor="contact-email">Email</label><input id="contact-email" type="email" placeholder="you@example.com" value={form.email} onChange={update('email')} autoComplete="email" /><span className="contact-field-error">{errors.email}</span></div>
+      </div>
+      <div className="contact-field"><label htmlFor="contact-subject">Subject</label><div className="contact-select-wrap"><select id="contact-subject" value={form.subject} onChange={update('subject')}>{subjects.map((option) => <option key={option}>{option}</option>)}</select><span className="contact-select-arrow">▾</span></div></div>
+      <div className={`contact-field ${errors.message ? 'has-error' : ''}`}><label htmlFor="contact-message">Message</label><textarea id="contact-message" rows={5} placeholder="Tell me about your project, training, or idea…" value={form.message} onChange={update('message')} /><span className="contact-field-error">{errors.message}</span><span className="contact-field-count">{form.message.length} / 600</span></div>
+      <button className="contact-submit" type="submit" disabled={status === 'sending'}>{status === 'sending' ? <span className="contact-submit-spinner" /> : <span className="contact-submit-arrow" aria-hidden="true">↗</span>}<b>{status === 'sending' ? 'Sending…' : 'Send message'}</b></button>
+      {status === 'success' && lastSent ? <div className="contact-success"><span aria-hidden="true">✓</span><div><b>Sent — WhatsApp & inbox.</b><small>Thanks {lastSent.name}, your message is on its way to the owner.</small></div></div> : null}
+    </form>
+  );
+}
+
+function MessagesInbox({ onClose }) {
+  const [messages, setMessages] = useState(getMessages());
+  const [activeId, setActiveId] = useState(null);
+  const [inboxFilter, setInboxFilter] = useState('all');
+  useEffect(() => {
+    const onKey = (event) => { if (event.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+  const refresh = () => setMessages(getMessages());
+  const unread = messages.filter((message) => !message.read).length;
+  const visible = messages.filter((message) => (inboxFilter === 'all' ? true : inboxFilter === 'read' ? message.read : !message.read));
+  const active = messages.find((message) => message.id === activeId) || null;
+  const markRead = (id) => { localStorage.setItem(MESSAGES_KEY, JSON.stringify(getMessages().map((message) => (message.id === id ? { ...message, read: true } : message)))); refresh(); if (activeId === id) setActiveId(null); };
+  const markAllRead = () => { localStorage.setItem(MESSAGES_KEY, JSON.stringify(getMessages().map((message) => ({ ...message, read: true })))); refresh(); };
+  const remove = (id) => { localStorage.setItem(MESSAGES_KEY, JSON.stringify(getMessages().filter((message) => message.id !== id))); refresh(); if (activeId === id) setActiveId(null); };
+  const clearAll = () => { if (window.confirm('Delete all messages? This cannot be undone.')) { localStorage.setItem(MESSAGES_KEY, JSON.stringify([])); setActiveId(null); refresh(); } };
+  return (
+    <div className="inbox-overlay" role="dialog" aria-modal="true" aria-label="Message inbox">
+      <div className="inbox-panel">
+        <div className="inbox-header"><div><h3>Message inbox</h3><small>Owner view — messages stored in this browser</small></div><button className="inbox-close" type="button" onClick={onClose} aria-label="Close inbox">✕</button></div>
+        <div className="inbox-stats"><div className="inbox-stat"><b>{messages.length}</b><small>Total</small></div><div className="inbox-stat"><b>{unread}</b><small>Unread</small></div><div className="inbox-stat"><b>{messages.length - unread}</b><small>Read</small></div></div>
+        <div className="inbox-toolbar"><div className="inbox-filters">{[['all', 'All'], ['unread', 'Unread'], ['read', 'Read']].map(([key, label]) => <button className={inboxFilter === key ? 'inbox-filter is-active' : 'inbox-filter'} type="button" onClick={() => setInboxFilter(key)} key={key}>{label}</button>)}</div><div className="inbox-actions">{messages.length ? <button className="inbox-action" type="button" onClick={markAllRead}>Mark all read</button> : null}{messages.length ? <button className="inbox-action" type="button" onClick={clearAll}>Delete all</button> : null}</div></div>
+        <div className="inbox-list">{visible.length === 0 ? <div className="inbox-empty"><b>No messages{inboxFilter !== 'all' ? ` ${inboxFilter}` : ''} yet.</b>Messages sent through the contact form will appear here.</div> : visible.map((message) => <div className={`inbox-item ${message.read ? 'is-read' : ''} ${activeId === message.id ? 'is-active' : ''}`} key={message.id}><span className="inbox-item-dot" /><div className="inbox-item-main"><button className="inbox-item-open" type="button" onClick={() => setActiveId(activeId === message.id ? null : message.id)}><div className="inbox-item-top"><b>{message.name}</b><small>{new Date(message.createdAt).toLocaleString()}</small></div><div className="inbox-item-subject">{message.subject}</div><div className="inbox-item-preview">{message.message}</div></button></div><div className="inbox-item-actions"><button className="inbox-item-action" type="button" onClick={() => { if (!message.read) markRead(message.id); }}>{message.read ? 'Read' : 'Mark read'}</button><button className="inbox-item-action" type="button" onClick={() => remove(message.id)}>Delete</button></div></div>)}
+        {active ? <div className="inbox-detail"><div className="inbox-detail-head"><b>{active.name}</b><a href={`mailto:${active.email}`}>{active.email} ↗</a><small>{new Date(active.createdAt).toLocaleString()}</small></div><span className="inbox-detail-subject">{active.subject}</span><div className="inbox-detail-message">{active.message}</div></div> : null}</div>
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [inboxOpen, setInboxOpen] = useState(false);
+  const [inboxTick, setInboxTick] = useState(0);
   const [projectFilter, setProjectFilter] = useState('All');
   const [roleIndex, setRoleIndex] = useState(0);
   const closeMenu = () => setMenuOpen(false);
@@ -348,21 +538,22 @@ function App() {
       <div className="pointer-glow" aria-hidden="true" />
       <ScrollProgress />
       <header className="site-header"><div className="site-header-inner"><a className="brand" href="#top" onClick={closeMenu} aria-label="Minahil Irfan home"><span className="brand-mark">MI</span><span>minahil.irfan</span></a>
-        <nav className={`desktop-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation"><a href="#about" onClick={closeMenu}>About</a><a href="#work" onClick={closeMenu}>Projects</a><a href="#students" onClick={closeMenu}>Students</a><a href="#testimonials" onClick={closeMenu}>Kind words</a><a href="#experience" onClick={closeMenu}>Experience</a><a href="#skills" onClick={closeMenu}>Skills</a><a href="#contact" onClick={closeMenu}>Contact</a></nav>
-        <a className="header-cta" href="mailto:hello@minahil.dev">Let's talk <span>↗</span></a>
+        <nav className={`desktop-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Main navigation"><a href="#about" onClick={closeMenu}>About</a><a href="#work" onClick={closeMenu}>Projects</a><a href="#students" onClick={closeMenu}>Students</a><a href="#testimonials" onClick={closeMenu}>Kind words</a><a href="#experience" onClick={closeMenu}>Experience</a><a href="#education" onClick={closeMenu}>Education</a><a href="#skills" onClick={closeMenu}>Skills</a><a href="#contact" onClick={closeMenu}>Contact</a></nav>
+        <a className="header-cta" href={`mailto:${OWNER.email}`}>Let's talk <span>↗</span></a>
         <button className={`menu-toggle ${menuOpen ? 'is-open' : ''}`} type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}><span /><span /></button></div>
       </header>
 
       <main id="top">
-        <section className="hero section-shell" aria-labelledby="hero-title"><video className="hero-background-video" autoPlay muted loop playsInline poster="https://cdn.coverr.co/videos/coverr-coding-sequences-9906/thumbnail?width=1920" aria-hidden="true"><source src="https://cdn.coverr.co/videos/coverr-coding-sequences-9906/1080p.mp4" type="video/mp4" /></video><div className="hero-video-overlay" aria-hidden="true" /><div className="hero-copy hero-copy-featured"><div className="availability"><span className="availability-ping" /> Available for projects</div><h1 className="hero-name" id="hero-title"><span>Minahil</span> <em>Irfan</em></h1><p className="hero-role"><span className="role-swap" key={roles[roleIndex]}>{roles[roleIndex]}</span><span className="typing-caret" /></p><p className="hero-intro">To me, MERN isn't a stack — it's a conversation between a MongoDB document and a React screen, stitched together with Node and Express. I build that bridge for real products and teach the next generation of developers at SMIT to build it too.</p><div className="hero-actions"><a className="hero-button hero-button-primary" href="#work"><span aria-hidden="true">◉</span> See what I ship</a><a className="hero-button hero-button-secondary" href="#contact"><span aria-hidden="true">➤</span> Build something together</a></div><div className="hero-proof"><span><b>03+</b> years building</span><span><b>50+</b> students mentored</span></div><TerminalHint /></div><div className="hero-visual" aria-label="Interactive 3D design study"><span className="visual-label visual-label-top">MERN / 3D study</span><Scene /><span className="visual-label visual-label-bottom">Drag to explore</span></div></section>
-        <section className="ticker" aria-label="Services"><div className="ticker-track"><span>MongoDB</span><i>✳</i><span>Express.js</span><i>✳</i><span>React.js</span><i>✳</i><span>Node.js</span><i>✳</i><span>Developer training</span><i>✳</i><span>MongoDB</span><i>✳</i><span>Express.js</span><i>✳</i></div></section>
+        <section className="hero section-shell" aria-labelledby="hero-title"><video className="hero-background-video" autoPlay muted loop playsInline aria-hidden="true"><source src="/video%20projrct.mp4" type="video/mp4" /></video><div className="hero-video-overlay" aria-hidden="true" /><div className="hero-copy hero-copy-featured"><div className="availability"><span className="availability-ping" /> Available for projects</div><h1 className="hero-name" id="hero-title"><span>Minahil</span> <em>Irfan</em></h1><p className="hero-role"><span className="role-swap" key={roles[roleIndex]}>{roles[roleIndex]}</span><span className="typing-caret" /></p><p className="hero-intro">To me, MERN isn't a stack — it's a conversation between a MongoDB document and a React screen, stitched together with Node and Express. I build that bridge for real products and teach the next generation of developers at SMIT to build it too.</p><div className="hero-actions"><a className="hero-button hero-button-primary" href="#work"><span aria-hidden="true">◉</span> See what I ship</a><a className="hero-button hero-button-secondary" href="#contact"><span aria-hidden="true">➤</span> Build something together</a></div><div className="hero-proof"><span><b>03+</b> years building</span><span><b>50+</b> students mentored</span></div><TerminalHint /></div></section>
+        <section className="ticker" aria-label="Skills"><div className="ticker-track">{[...tickerSkills, ...tickerSkills].map((skill, index) => <span className="ticker-item" key={`${skill}-${index}`}>{skillIcons[skill]}<b>{skill}</b></span>)}</div></section>
         <section className="work section-shell" id="work"><div className="section-heading reveal"><div><p className="eyebrow">02 — Minahil's projects</p><h2 className="moving-heading"><span>Work</span> <span>that</span><br /><em>moves.</em></h2></div><div className="project-intro-motion"><span className="project-intro-label">Currently exploring</span><p className="section-note">MERN builds, learning tools, and digital experiences crafted by Minahil Irfan.</p><div className="project-intro-track"><span>React interfaces</span><i>✦</i><span>Secure APIs</span><i>✦</i><span>Useful products</span><i>✦</i></div></div></div><div className="filter-row" role="group" aria-label="Filter projects">{['All', 'Interactive', 'Experience', 'Identity'].map((filter) => <button className={projectFilter === filter ? 'filter-button is-active' : 'filter-button'} type="button" onClick={() => setProjectFilter(filter)} key={filter}>{filter}</button>)}</div><ProjectsSlider projects={visibleProjects} /></section>
-        <section className="experience section-shell" id="experience"><div className="section-heading reveal"><div><p className="eyebrow">03 — The path so far</p><h2>Work, study,<br /><em>repeat.</em></h2></div><p className="section-note">Four roles, one through-line — building things, teaching the craft, and shipping real work.</p></div><ExperiencePanel /></section>
-        <section className="skills section-shell" id="skills"><div className="skills-intro reveal"><p className="eyebrow">04 — The toolkit</p><h2>Good with<br /><em>the details.</em></h2><p>I move comfortably between big-picture thinking and the tiny interaction that makes a product feel alive.</p></div><div className="skill-cloud">{skills.map((skill, index) => <span className={`skill-pill skill-${index + 1}`} key={skill}>{skill}<b>0{index + 1}</b></span>)}</div></section>
-        <section className="about section-shell" id="about"><div className="section-heading reveal"><div><p className="eyebrow">05 — About Minahil</p><h2>Code that is<br /><em>useful.</em></h2></div><p className="section-note about-intro-tab"><span className="about-intro-number">01</span><span>Meet Minahil Irfan: a MERN developer, trainer, and thoughtful builder.</span><b>↗</b></p></div><div className="about-modern-layout"><div className="about-left-column"><AboutProfile /><div className="about-stats"><div className="stat-card reveal reveal-up"><strong>50<span>+</span></strong><small>Students mentored</small></div><div className="stat-card reveal reveal-up"><strong>6<span>+</span></strong><small>Projects delivered</small></div><div className="stat-card reveal reveal-up"><strong>3<span>+</span></strong><small>Years experience</small></div><div className="stat-card reveal reveal-up"><strong>100<span>%</span></strong><small>Dedication</small></div></div></div><div className="services-panel"><p className="services-kicker reveal reveal-right"><span /> What I do for you</p><div className="services-grid">{services.map((service, index) => <article className="service-card reveal reveal-right" style={{ '--delay': `${index * 120}ms` }} key={service.title}><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p></article>)}</div></div></div><div className="about-grid about-grid-after"><p className="about-lead reveal"><span className="lead-kicker">Build / Teach / Evolve</span><span className="lead-text">I create scalable web applications and teach the thinking behind them, combining clean code, expressive interfaces, and practical problem solving.</span></p><div className="about-details reveal"><p>Open to full stack collaborations, technical mentorship, workshops, and developer training for teams and students.</p><div className="about-tags"><span>MERN specialist</span><span>JavaScript trainer</span><span>Full stack builder</span><span>Remote friendly</span></div><a className="text-link" href="mailto:hello@minahil.dev">Work with Minahil <span>↗</span></a></div></div></section>
-        <section className="students section-shell" id="students"><div className="students-mark" aria-hidden="true">MI</div><div className="students-copy reveal"><p className="eyebrow">For students + future developers</p><h2 className="students-heading"><span className="students-word">Learn</span> <span className="students-word">by</span><br /><em className="students-word students-word-alt">building.</em></h2><div className="students-badge" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="students-badge-arc" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0" /></defs><text><textPath href="#students-badge-arc">IDEAS → CODE → SHIP → REPEAT · </textPath></text></svg><b>✦</b></div><p className="students-lead">Confused by the gap between tutorials and real projects? I teach <em className="hl" title="JavaScript">JavaScript</em> and <em className="hl" title="MongoDB · Express.js · React.js · Node.js">MERN</em> development through practical builds, code reviews, and a clear path from idea to deployment.</p><a className="button button-outline" href="mailto:hello@minahil.dev?subject=MERN%20training">Ask about training <span>↗</span></a></div><StudentShowcase /></section>
-        <section className="testimonials section-shell" id="testimonials"><div className="section-heading reveal"><div><p className="eyebrow">06 — Kind words</p><h2>People say<br /><em>nice things.</em></h2></div><p className="section-note">Feedback from learners, clients, and teammates along the way.</p></div><TestimonialSlider /></section>
-        <section className="contact section-shell" id="contact"><div className="contact-inner reveal"><p className="eyebrow">07 — Start a conversation</p><h2>Let's build<br /><em>something.</em></h2><a className="contact-link" href="mailto:hello@minahil.dev">hello@minahil.dev <span>↗</span></a></div><div className="contact-footer"><span>© 2026 Minahil Irfan / Karachi, Pakistan</span><div><a href="#top">Back to top ↑</a><a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com" target="_blank" rel="noreferrer">GitHub ↗</a></div></div></section>
+        <section className="experience section-shell" id="experience"><div className="section-heading reveal"><div><p className="eyebrow">03 — The path so far</p><h2>Work, study,<br /><em>repeat.</em></h2></div><p className="section-note">Three roles, one through-line — building things, teaching the craft, and shipping real work.</p></div><ExperiencePanel /></section>
+        <section className="education section-shell" id="education"><div className="section-heading reveal"><div><p className="eyebrow">04 — The learning curve</p><h2>Schooled,<br /><em>self-taught.</em></h2></div><p className="section-note">Formal study met real practice — flip the cards to see how each credential became a building block toward shipping software.</p></div><EducationPanel /></section>
+        <section className="skills section-shell" id="skills"><div className="skills-intro reveal"><p className="eyebrow">05 — The toolkit</p><h2>Good with<br /><em>the details.</em></h2><p>I move comfortably between big-picture thinking and the tiny interaction that makes a product feel alive.</p><div className="skills-stats"><div><b>{skillGroups.reduce((total, group) => total + group.items.length, 0)}</b><small>Technologies</small></div><div><b>4</b><small>Core areas</small></div></div></div><div className="skills-grid">{skillGroups.map((group, index) => <article className="skill-group reveal" style={{ '--delay': `${index * 90}ms` }} key={group.title}><div className="skill-group-head"><span className="skill-group-icon">{group.icon}</span><div><p className="skill-group-label">0{index + 1} / {group.title}</p><h3>{group.title}</h3></div></div><div className="skill-group-tags">{group.items.map((item) => <span key={item}><b>✦</b>{item}</span>)}</div></article>)}</div></section>
+        <section className="about section-shell" id="about"><div className="section-heading reveal"><div><p className="eyebrow">06 — About Minahil</p><h2>Code that is<br /><em>useful.</em></h2></div><p className="section-note about-intro-tab"><span className="about-intro-number">01</span><span>Meet Minahil Irfan: a MERN developer, trainer, and thoughtful builder.</span><b>↗</b></p></div><div className="about-modern-layout"><div className="about-left-column"><AboutProfile /><div className="about-stats"><div className="stat-card reveal reveal-up"><strong>50<span>+</span></strong><small>Students mentored</small></div><div className="stat-card reveal reveal-up"><strong>6<span>+</span></strong><small>Projects delivered</small></div><div className="stat-card reveal reveal-up"><strong>3<span>+</span></strong><small>Years experience</small></div><div className="stat-card reveal reveal-up"><strong>100<span>%</span></strong><small>Dedication</small></div></div></div><div className="services-panel"><p className="services-kicker reveal reveal-right"><span /> What I do for you</p><div className="services-grid">{services.map((service, index) => <article className="service-card reveal reveal-right" style={{ '--delay': `${index * 120}ms` }} key={service.title}><span className="service-icon">{service.icon}</span><h3>{service.title}</h3><p>{service.text}</p></article>)}</div></div></div><div className="about-grid about-grid-after"><p className="about-lead reveal"><span className="lead-kicker">Build / Teach / Evolve</span><span className="lead-text">I create scalable web applications and teach the thinking behind them, combining clean code, expressive interfaces, and practical problem solving.</span></p><div className="about-details reveal"><p>Open to full stack collaborations, technical mentorship, workshops, and developer training for teams and students.</p><div className="about-tags"><span>MERN specialist</span><span>JavaScript trainer</span><span>Full stack builder</span><span>Remote friendly</span></div><a className="text-link" href="mailto:hello@minahil.dev">Work with Minahil <span>↗</span></a></div></div></section>
+        <section className="students section-shell" id="students"><div className="students-mark" aria-hidden="true">MI</div><div className="students-copy reveal"><p className="eyebrow">For students + future developers</p><h2 className="students-heading"><span className="students-word">Learn</span> <span className="students-word">by</span><br /><em className="students-word students-word-alt">building.</em></h2><div className="students-badge" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="students-badge-arc" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0" /></defs><text><textPath href="#students-badge-arc">IDEAS → CODE → SHIP → REPEAT · </textPath></text></svg><b>✦</b></div><p className="students-lead">Confused by the gap between tutorials and real projects? I teach <em className="hl" title="JavaScript">JavaScript</em> and <em className="hl" title="MongoDB · Express.js · React.js · Node.js">MERN</em> development through practical builds, code reviews, and a clear path from idea to deployment.</p><a className="button button-outline" href={`mailto:${OWNER.email}?subject=MERN%20training`}>Ask about training <span>↗</span></a></div><StudentShowcase /></section>
+        <section className="testimonials section-shell" id="testimonials"><div className="section-heading reveal"><div><p className="eyebrow">07 — Kind words</p><h2>People say<br /><em>nice things.</em></h2></div><FeedbackNote /></div><TestimonialSlider /></section>
+        <section className="contact section-shell" id="contact"><div className="contact-inner reveal"><p className="eyebrow">08 — Start a conversation</p><h2>Let's build<br /><em>something.</em></h2></div><div className="contact-layout"><div className="contact-info"><p className="contact-info-note">Call, WhatsApp, or email — whichever is easiest for you. I usually reply within 24 hours.</p><div className="contact-details-card"><a className="contact-detail-row" href="tel:+923352381776"><span className="contact-detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg></span><span className="contact-detail-copy"><small>Phone</small><b>{OWNER.phone}</b></span><em className="contact-detail-arrow">↗</em></a><a className="contact-detail-row" href={`https://wa.me/${OWNER.whatsappIntl}`} target="_blank" rel="noreferrer"><span className="contact-detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg></span><span className="contact-detail-copy"><small>WhatsApp</small><b>{OWNER.whatsapp}</b></span><em className="contact-detail-arrow">↗</em></a><a className="contact-detail-row" href={`mailto:${OWNER.email}`}><span className="contact-detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg></span><span className="contact-detail-copy"><small>Email</small><b>{OWNER.email}</b></span><em className="contact-detail-arrow">↗</em></a><div className="contact-detail-row"><span className="contact-detail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg></span><span className="contact-detail-copy"><small>Location</small><b>{OWNER.location}</b></span></div></div><p className="contact-availability"><span className="contact-info-live"><i /> Open for projects</span></p><div className="contact-socials"><a href={`https://wa.me/${OWNER.whatsappIntl}`} target="_blank" rel="noreferrer">WhatsApp ↗</a><a href={`mailto:${OWNER.email}`}>Email ↗</a><a href="https://www.linkedin.com/in/minahil-irfan-shaikh/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/minahilirfan26" target="_blank" rel="noreferrer">GitHub ↗</a></div></div><ContactForm onSent={() => setInboxTick((tick) => tick + 1)} /></div><div className="contact-footer"><span>© 2026 Minahil Irfan / Karachi, Pakistan</span><div><a href="#top">Back to top ↑</a><button className="contact-inbox-trigger" type="button" onClick={() => setInboxOpen(true)}>Inbox{msgCount() > 0 ? <b>{msgCount()}</b> : null}</button><a href="https://www.linkedin.com/in/minahil-irfan-shaikh/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://github.com/minahilirfan26" target="_blank" rel="noreferrer">GitHub ↗</a></div></div>{inboxOpen ? <MessagesInbox onClose={() => setInboxOpen(false)} /> : null}</section>
       </main>
     </div>
   );
