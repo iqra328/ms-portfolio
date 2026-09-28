@@ -74,7 +74,7 @@ const testimonials = [
   { quote: 'From idea to deployment, Minahil kept everything on track — no jargon, no drama, just working software and honest timelines.', name: 'Client', role: 'WordPress project', initials: 'CL' },
 ];
 
-const portraitImage = '/minahil-about.png';
+const portraitImage = '/profile-professional.jpg';
 
 const studentWorks = [
   { id: 'taskflow', category: 'MERN Apps', student: 'Ahmed Raza', title: 'TaskFlow', stack: 'React · Node · Express · MongoDB', description: 'A collaborative task manager built end to end — students learn auth, CRUD, and live progress tracking across the whole stack.', tags: ['Auth', 'CRUD', 'REST API'], image: '/student-pro-1.jpg' },
@@ -196,16 +196,16 @@ function MiniProjectCard({ project, number }) {
 
 function ProjectsSlider({ projects: sliderProjects }) {
   if (!sliderProjects.length) return <p className="empty-projects">No projects in this category yet.</p>;
-  const gcd = (a, b) => (b ? gcd(b, a % b) : a);
-  const cols = (typeof window === 'undefined' ? 3 : window.innerWidth <= 760 ? 2 : 3);
-  const base = sliderProjects.length;
-  const count = (base * cols) / gcd(base, cols);
-  const cards = Array.from({ length: count }, (_, i) => ({ ...sliderProjects[i % base], _number: (i % base) + 1 }));
-  const rowCount = count / cols;
-  const rows = [];
-  for (let i = 0; i < cards.length; i += cols) rows.push(cards.slice(i, i + cols));
-  const secondsPerRow = 2.6;
-  return <div className="projects-slider"><div className="slider-stage"><div className="slider-track slider-track-loop" style={{ '--loop-count': rowCount, '--loop-duration': `${rowCount * secondsPerRow}s` }}>{rows.map((row, r) => <div className="slider-row" key={r}>{row.map((project) => <MiniProjectCard project={project} number={project._number} key={`${project.title}-${project._number}-${r}`} />)}</div>)}</div></div></div>;
+  const drop = [...sliderProjects, ...sliderProjects];
+  return (
+    <div className="projects-carousel">
+      <div className="projects-carousel-viewport">
+        <div className="projects-carousel-track" style={{ '--drop-duration': `${Math.max(8, sliderProjects.length * 2)}s` }}>
+          {drop.map((project, i) => <div className="projects-carousel-drop" key={`${project.title}-${i}`}><MiniProjectCard project={project} number={(i % sliderProjects.length) + 1} /></div>)}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 function ScrollProgress() {
@@ -221,6 +221,31 @@ function ScrollProgress() {
   }, []);
   const circumference = 2 * Math.PI * 19;
   return <a className="scroll-progress" href="#top" aria-label="Back to top" style={{ '--scroll-dash': circumference, '--scroll-offset': circumference * (1 - progress) }}><svg viewBox="0 0 44 44" aria-hidden="true"><circle className="progress-track" cx="22" cy="22" r="19" /><circle className="progress-value" cx="22" cy="22" r="19" /></svg><span>{Math.round(progress * 100)}%</span></a>;
+}
+
+function HeroBackdrop() {
+  const videoRef = useRef(null);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    let visible = true;
+    const sync = () => {
+      if (visible) video.play().catch(() => setFailed(true));
+      else video.pause();
+    };
+    const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }, { threshold: 0.05 });
+    observer.observe(video);
+    sync();
+    return () => observer.disconnect();
+  }, []);
+  return (
+    <div className={`hero-backdrop ${failed ? 'is-fallback' : ''}`} aria-hidden="true">
+      {!failed && <video ref={videoRef} className="hero-background-video" poster="/hero-code-matrix.jpg" autoPlay muted loop playsInline preload="metadata" onError={() => setFailed(true)}><source src="/hero-code-matrix.mp4" type="video/mp4" /></video>}
+      <div className="hero-video-overlay" />
+    </div>
+  );
 }
 
 const terminalLines = ['npm run build', 'node server.js', 'git push origin main'];
@@ -362,7 +387,7 @@ function AboutProfile() {
   const changeTab = (nextIndex, direction = nextIndex >= activeTab ? 1 : -1) => { setSlideDirection(direction); setActiveTab(nextIndex); };
   const moveTab = (direction) => changeTab((activeTab + direction + aboutTabs.length) % aboutTabs.length, direction);
   useEffect(() => { const tabTimer = window.setInterval(() => { setActiveTab((index) => { setSlideDirection(index % 2 === 0 ? 1 : -1); return (index + 1) % aboutTabs.length; }); }, 4800); return () => window.clearInterval(tabTimer); }, []);
-  return <div className="about-profile"><div className="profile-visual"><img src={portraitImage} alt="Minahil Irfan portrait" /><div className="profile-image-wash" /><div className="profile-frame profile-frame-one" /><div className="profile-frame profile-frame-two" /><span className="profile-index">0{activeTab + 1} / 03</span><span className="profile-caption">Minahil Irfan / MERN Developer</span><div className="profile-progress"><span style={{ width: `${((activeTab + 1) / aboutTabs.length) * 100}%` }} /></div></div><div className="profile-info"><div className="profile-tabs" role="tablist" aria-label="About Minahil"><span className="tab-line" />{aboutTabs.map((tab, index) => <button className={activeTab === index ? 'profile-tab is-active' : 'profile-tab'} type="button" role="tab" aria-selected={activeTab === index} onClick={() => changeTab(index)} key={tab.label}>{tab.label}<b>0{index + 1}</b></button>)}</div><div className={`profile-copy profile-copy-${slideDirection > 0 ? 'right' : 'left'}`} key={activeTab}><p className="eyebrow">{active.label}</p><h3>{active.title}</h3><p>{active.text}</p></div><div className="profile-controls"><button type="button" onClick={() => moveTab(-1)} aria-label="Previous About panel">← <span>Previous</span></button><button type="button" onClick={() => moveTab(1)} aria-label="Next About panel"><span>Next</span> →</button></div></div></div>;
+  return <div className="about-profile"><div className="profile-visual"><img src={portraitImage} alt="Professional developer portrait" /><div className="profile-image-wash" /><div className="profile-frame profile-frame-one" /><div className="profile-frame profile-frame-two" /><span className="profile-index">0{activeTab + 1} / 03</span><span className="profile-caption">Minahil Irfan / MERN Developer</span><div className="profile-progress"><span style={{ width: `${((activeTab + 1) / aboutTabs.length) * 100}%` }} /></div></div><div className="profile-info"><div className="profile-tabs" role="tablist" aria-label="About Minahil"><span className="tab-line" />{aboutTabs.map((tab, index) => <button className={activeTab === index ? 'profile-tab is-active' : 'profile-tab'} type="button" role="tab" aria-selected={activeTab === index} onClick={() => changeTab(index)} key={tab.label}>{tab.label}<b>0{index + 1}</b></button>)}</div><div className={`profile-copy profile-copy-${slideDirection > 0 ? 'right' : 'left'}`} key={activeTab}><p className="eyebrow">{active.label}</p><h3>{active.title}</h3><p>{active.text}</p></div><div className="profile-controls"><button type="button" onClick={() => moveTab(-1)} aria-label="Previous About panel">← <span>Previous</span></button><button type="button" onClick={() => moveTab(1)} aria-label="Next About panel"><span>Next</span> →</button></div></div></div>;
 }
 
 function StudentShowcase() {
@@ -544,7 +569,7 @@ function App() {
       </header>
 
       <main id="top">
-        <section className="hero section-shell" aria-labelledby="hero-title"><video className="hero-background-video" autoPlay muted loop playsInline aria-hidden="true"><source src="/video%20projrct.mp4" type="video/mp4" /></video><div className="hero-video-overlay" aria-hidden="true" /><div className="hero-copy hero-copy-featured"><div className="availability"><span className="availability-ping" /> Available for projects</div><h1 className="hero-name" id="hero-title"><span>Minahil</span> <em>Irfan</em></h1><p className="hero-role"><span className="role-swap" key={roles[roleIndex]}>{roles[roleIndex]}</span><span className="typing-caret" /></p><p className="hero-intro">To me, MERN isn't a stack — it's a conversation between a MongoDB document and a React screen, stitched together with Node and Express. I build that bridge for real products and teach the next generation of developers at SMIT to build it too.</p><div className="hero-actions"><a className="hero-button hero-button-primary" href="#work"><span aria-hidden="true">◉</span> See what I ship</a><a className="hero-button hero-button-secondary" href="#contact"><span aria-hidden="true">➤</span> Build something together</a></div><div className="hero-proof"><span><b>03+</b> years building</span><span><b>50+</b> students mentored</span></div><TerminalHint /></div></section>
+        <section className="hero section-shell" aria-labelledby="hero-title"><HeroBackdrop /><div className="hero-copy hero-copy-featured"><div className="availability"><span className="availability-ping" /> Available for projects</div><h1 className="hero-name" id="hero-title"><span>Minahil</span> <em>Irfan</em></h1><p className="hero-role"><span className="role-swap" key={roles[roleIndex]}>{roles[roleIndex]}</span><span className="typing-caret" /></p><p className="hero-intro">To me, MERN isn't a stack — it's a conversation between a MongoDB document and a React screen, stitched together with Node and Express. I build that bridge for real products and teach the next generation of developers at SMIT to build it too.</p><div className="hero-actions"><a className="hero-button hero-button-primary" href="#work"><span aria-hidden="true">◉</span> See what I ship</a><a className="hero-button hero-button-secondary" href="#contact"><span aria-hidden="true">➤</span> Build something together</a></div><div className="hero-proof"><span><b>03+</b> years building</span><span><b>50+</b> students mentored</span></div><TerminalHint /></div></section>
         <section className="ticker" aria-label="Skills"><div className="ticker-track">{[...tickerSkills, ...tickerSkills].map((skill, index) => <span className="ticker-item" key={`${skill}-${index}`}>{skillIcons[skill]}<b>{skill}</b></span>)}</div></section>
         <section className="work section-shell" id="work"><div className="section-heading reveal"><div><p className="eyebrow">02 — Minahil's projects</p><h2 className="moving-heading"><span>Work</span> <span>that</span><br /><em>moves.</em></h2></div><div className="project-intro-motion"><span className="project-intro-label">Currently exploring</span><p className="section-note">MERN builds, learning tools, and digital experiences crafted by Minahil Irfan.</p><div className="project-intro-track"><span>React interfaces</span><i>✦</i><span>Secure APIs</span><i>✦</i><span>Useful products</span><i>✦</i></div></div></div><div className="filter-row" role="group" aria-label="Filter projects">{['All', 'Interactive', 'Experience', 'Identity'].map((filter) => <button className={projectFilter === filter ? 'filter-button is-active' : 'filter-button'} type="button" onClick={() => setProjectFilter(filter)} key={filter}>{filter}</button>)}</div><ProjectsSlider projects={visibleProjects} /></section>
         <section className="experience section-shell" id="experience"><div className="section-heading reveal"><div><p className="eyebrow">03 — The path so far</p><h2>Work, study,<br /><em>repeat.</em></h2></div><p className="section-note">Three roles, one through-line — building things, teaching the craft, and shipping real work.</p></div><ExperiencePanel /></section>
