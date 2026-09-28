@@ -232,7 +232,7 @@ function HeroBackdrop() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
     let visible = true;
     const sync = () => {
-      if (visible) video.play().catch(() => setFailed(true));
+      if (visible) video.play().catch(() => {});
       else video.pause();
     };
     const observer = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; sync(); }, { threshold: 0.05 });
